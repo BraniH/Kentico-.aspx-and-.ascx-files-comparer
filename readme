@@ -1,0 +1,3 @@
+This program looks for differences between files with .aspx and .ascx extensions in two given paths 
+(eg. if path is in default installation of kenico or if file was changed. When different files are found, 
+it also checks for potentially vulnerable strings.
