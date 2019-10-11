@@ -3,6 +3,14 @@ import requests
 import re
 import filecmp
 
+
+
+'''This program looks for differences between files with .aspx and .ascx extensions in two given paths 
+(eg. if path is in default installation of kenico or if file was changed. When different files are found, 
+it also checks for potentially vulnerable strings.'''
+
+
+
 path1 = 'C:\\inetpub\\wwwroot\\Kentico11\\CMS\\'
 path2 = 'C:\\inetpub\\wwwroot\\Banter\\CMS\\'  # Path to the test project
 
@@ -52,16 +60,18 @@ complete_test_files = turn_slashes(files2)
 
 
 print("\n[+] Finding new and changed files!")
-#if path is not in 
+#if the path is not in the default installation of kentico add it 
 for path in complete_test_files:
     if path not in complete_kentico_files:
         extracted_paths.append(path)
     else:
+    #if the path is in the deffault instalation, check if the file was changed
         reconstruct_path1 = path1 + path
         reconstruct_path2 = path2 + path
         reconstruct_path1 = turn_slashes_back(reconstruct_path1)
         reconstruct_path2 = turn_slashes_back(reconstruct_path2)
         file_difference = recognize_different_files(reconstruct_path1, reconstruct_path2)
+        #if the file was changed, add it
         if file_difference == False:
              extracted_paths.append(path)
 
