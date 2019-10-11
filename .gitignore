@@ -52,6 +52,7 @@ complete_test_files = turn_slashes(files2)
 
 
 print("\n[+] Finding new and changed files!")
+#if path is not in 
 for path in complete_test_files:
     if path not in complete_kentico_files:
         extracted_paths.append(path)
