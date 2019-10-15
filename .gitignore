@@ -1,0 +1,3 @@
+# Make git ignore output files produced by 
+# the comparer utility.
+AllCustomFiles.txt
