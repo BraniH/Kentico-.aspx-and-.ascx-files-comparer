@@ -4,17 +4,8 @@ import filecmp
 from os.path import relpath
 
 
-path1 = 'C:\\inetpub\\wwwroot\\Kentico11\\CMS\\'
-path2 = 'C:\\inetpub\\wwwroot\\Banter\\CMS\\'  # Path to the test project
 clean_path = 'C:\\inetpub\\wwwroot\\Kentico11_2\\CMS'
 modified_path = 'C:\\Users\\DanielD\\Desktop\\BPAYAudit\\BPaySource\\CMS'  # Path to the test project
-
-files1 = []
-files2 = []
-new_paths = []
-extracted_paths = []
-all_correct_paths = []
-
 
 def find_paths(path):
     files = []
