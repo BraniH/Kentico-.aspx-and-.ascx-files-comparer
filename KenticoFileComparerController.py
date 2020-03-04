@@ -5,7 +5,7 @@ from os.path import relpath
 
 
 clean_path = 'C:\\inetpub\\wwwroot\\Kentico11\\CMS\\'
-modified_path = 'C:\\inetpub\\wwwroot\\Banter\\CMS\\'  # Path to the test project
+modified_path = 'C:\\inetpub\\wwwroot\\xxx\\CMS\\'  # Path to the test project
 
 def find_paths(path):
     files = []
@@ -20,7 +20,7 @@ def compare_files(file1, file2):
     return filecmp.cmp(file1, file2)
 
 
-print("[+] Program started!")
+print("[+] The program started!")
 
 clean = [relpath(file, clean_path) for file in find_paths(clean_path)]
 modified = [relpath(file, modified_path) for file in find_paths(modified_path)]
@@ -42,14 +42,14 @@ for path in modified:
 
 
 # Vulnerable string lookup
-vuln_strings = [ "GetString", "Eval", "ScriptHelper.GetScript", 
-    "HttpContext.Current.Request", "lbl", "Lbl" ]
+vuln_strings = [ "getstring", "eval", "scripthelper.getscript", 
+    "httpcontext.current.request", "lbl" ]
 filtered = []
 for file in diff_files:
     with open(os.path.join(modified_path, file), encoding='utf-8', errors='ignore') as f:
         data = f.read().replace('\n', '')
         for string in vuln_strings:
-            if string in data:
+            if string in data.lower():
                 filtered.append(file)
                 break # The vuln-string ocurrence found, no need to continue searching
 
